@@ -1,0 +1,77 @@
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div  class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+  
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">User Login</p>
+  
+                 <!-- end -->
+                 <div class="mx-1 mx-md-4">
+                  <form  [formGroup]="loginForm">
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <mat-form-field class="example-full-width">
+                        <mat-label>User Name</mat-label>
+                        <input matInput formControlName="username" placeholder="Sunil Mahali">
+                      </mat-form-field>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Password</mat-label>
+                        <input formControlName="password" type="password" matInput placeholder="********" >
+                      </mat-form-field>
+                    </div>
+
+                    <div class="form-check d-flex justify-content-center mb-5">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                      <label class="form-check-label" for="form2Example3">
+                        I agree all statements in <a href="#!">Terms of service</a>
+                      </label>
+                    </div>
+
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button type="button" [disabled]="loginForm.invalid" mat-raised-button color="primary" class="btn btn-primary w-100 btn-lg">Login</button>
+                    </div>
+  
+                  </form>
+                  <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="social-login w-100 flex-column rounded-top rounded-bottom px-5 d-flex gap-4  align-items-center flex-wrap justify-content-center">
+                      <p style="color: grey;" class="text-center fs-5 mb-3 mx-1 mx-md-4 mt-4">Or Sign In with :-</p>
+                     <div class="social-buttons flex-wrap flex-row d-flex align-items-center justify-content-center w-100 gap-3">
+                      <button class="w-md-50 w-sm-100 px-4" routerLink="/register" mat-raised-button style="color: white; background-color: rgb(228, 58, 58);">
+                        <i class="fab fa-google me-3" style="font-size: 1.3rem;position: relative;top: .15rem;"></i>
+                        <span style="font-size: 1rem;position: relative;right: .4rem;">Google</span>
+                      </button>
+                      <button class="w-md-50 w-sm-100" routerLink="/register" mat-raised-button color="primary">
+                        <i class="fab fa-facebook-square me-3" style="font-size: 1.3rem;"></i>
+                        <span style="font-size: 1rem;">Facebook</span>
+                      </button>
+                     </div>
+                    </div>
+                 </div>
+                 </div>
+                  
+  
+                </div>
+                
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+  
+                  <img [src]="image"
+                    class="img-fluid" alt="Sample image">
+  
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

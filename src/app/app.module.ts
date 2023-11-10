@@ -28,7 +28,13 @@ import { UserUIComponent } from './user-ui/user-ui.component';
 import { AdminUIComponent } from './admin-ui/admin-ui.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/material.module';
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { AuthService } from './services/auth.service';
+import { TokenInterceptor } from './services/token.interceptor';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { StockistUiComponent } from './stockist-ui/stockist-ui.component';
+import { VerifyUsersComponent } from './verify-users/verify-users.component';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,10 @@ import { HttpClientModule } from "@angular/common/http";
     LoginComponent,
     RegisterComponent,
     UserUIComponent,
-    AdminUIComponent
+    AdminUIComponent,
+    UnauthorizedComponent,
+    StockistUiComponent,
+    VerifyUsersComponent
   ],
   imports: [
     ToastrModule.forRoot(),
@@ -64,7 +73,14 @@ import { HttpClientModule } from "@angular/common/http";
     MdbTooltipModule,
     MdbValidationModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

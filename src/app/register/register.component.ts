@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,8 @@ export class RegisterComponent {
     private builder: FormBuilder, 
     private toastr: ToastrService,
     private auth : AuthService,
-    private router : Router
+    private router : Router,
+    private dataService : DataService
     ) {}
   registrationForm = this.builder.group({
     username: this.builder.control(
@@ -47,13 +49,13 @@ export class RegisterComponent {
         email: this.registrationForm.value.email!,
         password: this.registrationForm.value.password!
       };
-  
+      this.dataService.setFormData(this.registrationForm.value.email);
       this.auth.register(userDetails).subscribe(
         (response) => {
           // Registration successful, handle the response as needed
-          this.toastr.success(`${response.message}`);
+          this.toastr.success(`${response.message}`,"Action Required");
           // Optionally, you can redirect the user to a different page
-          this.router.navigate(['/login']);
+          this.router.navigate(['/verify-user']);
         },
         (error) => {
           // Registration failed, handle the error
@@ -63,15 +65,5 @@ export class RegisterComponent {
     } else {
       this.toastr.error('Please fill out the form correctly.');
     }
-  }
-  
-
-
-  onTestApp(){
-
-    // this.auth.test({name:"Sunil"}).subscribe((res: any)=>{
-    //   console.log("responmse fromserever ---", res)
-    // })
-
   }
 }

@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "C:/Users/SUNIL/Documents/GitHub/devBackend/application",
+            "outputPath": "C:/Users/SUNIL/Documents/GitHub/DevApp/application",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
